@@ -17,6 +17,17 @@ export const io = new Server(server, {
   }
 });
 
+async function pingConnections() {
+
+    const response = await fetch('https://youtube-watch-party-backend-l2m1.onrender.com/ping');
+    console.log(response);
+
+}
+
+setInterval(async () => {
+    await pingConnections()
+}, 1000 * 60 * 10);
+
 app.use(express.json());
 app.use(morgan("dev"))
 app.use(cors())
