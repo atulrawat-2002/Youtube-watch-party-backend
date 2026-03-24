@@ -24,7 +24,11 @@ app.use(cors())
 app.use('/api/rooms', roomRouter)
 socketHandler(io);
 
-
+app.get('/ping', (req, res) => {
+  res.status(200).json({
+    message: 'ok'
+  })
+})
 
 
 server.listen(PORT, () => {
