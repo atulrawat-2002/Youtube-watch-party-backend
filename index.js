@@ -19,12 +19,13 @@ export const io = new Server(server, {
 
 async function pingConnections() {
 
-    const response = await fetch('https://youtube-watch-party-backend-l2m1.onrender.com/ping');
-    console.log(response);
+    const response = await fetch('https://project001-efw8.onrender.com/ping');
+    console.log("Response from connections's backend ", await response.json());
 
 }
 
 setInterval(async () => {
+    console.log("sending request to connections's backend server")
     await pingConnections()
 }, 1000 * 60 * 10);
 
@@ -37,7 +38,7 @@ socketHandler(io);
 
 app.get('/ping', (req, res) => {
   res.status(200).json({
-    message: 'ok'
+    message: 'ok from youtube-watch party backend'
   })
 })
 
