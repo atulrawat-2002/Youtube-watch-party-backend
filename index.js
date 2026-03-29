@@ -33,7 +33,7 @@ setInterval(async () => {
     } catch (error) {
       console.log('Error in request interval', error.message);
     }
-}, 3000);
+}, 1000 * 60 * 10);
 
 app.use(express.json());
 app.use(morgan("dev"))
