@@ -25,11 +25,21 @@ async function pingConnections() {
     console.log('Error in connection ping request', error.massage);
   }
 }
+async function pingSlack() {
+  try {
+    const response = await fetch('https://slack-clone-backend-82w6.onrender.com/ping');
+    console.log("Response from connections's backend ", await response.json());
+  } catch (error) {
+    console.log('Error in connection ping request', error.massage);
+  }
+}
 
 setInterval(async () => {
     try {
       console.log("sending request to connections's backend server")
       await pingConnections()
+      console.log("sending request to slack's backend server")
+      await pingSlack()
     } catch (error) {
       console.log('Error in request interval', error.message);
     }
