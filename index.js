@@ -18,16 +18,22 @@ export const io = new Server(server, {
 });
 
 async function pingConnections() {
-
+  try {
     const response = await fetch('https://project001-efw8.onrender.com/ping');
     console.log("Response from connections's backend ", await response.json());
-
+  } catch (error) {
+    console.log('Error in connection ping request', error.massage);
+  }
 }
 
 setInterval(async () => {
-    console.log("sending request to connections's backend server")
-    await pingConnections()
-}, 1000 * 60 * 10);
+    try {
+      console.log("sending request to connections's backend server")
+      await pingConnections()
+    } catch (error) {
+      console.log('Error in request interval', error.message);
+    }
+}, 3000);
 
 app.use(express.json());
 app.use(morgan("dev"))
