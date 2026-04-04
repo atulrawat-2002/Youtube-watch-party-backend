@@ -34,16 +34,16 @@ async function pingSlack() {
   }
 }
 
-setInterval(async () => {
-    try {
-      console.log("sending request to connections's backend server")
-      await pingConnections()
-      console.log("sending request to slack's backend server")
-      await pingSlack()
-    } catch (error) {
-      console.log('Error in request interval', error.message);
-    }
-}, 1000 * 60 * 10);
+// setInterval(async () => {
+//     try {
+//       console.log("sending request to connections's backend server")
+//       await pingConnections()
+//       console.log("sending request to slack's backend server")
+//       await pingSlack()
+//     } catch (error) {
+//       console.log('Error in request interval', error.message);
+//     }
+// }, 1000 * 60 * 10);
 
 app.use(express.json());
 app.use(morgan("dev"))
